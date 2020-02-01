@@ -4,7 +4,13 @@ const Schema = mongoose.Schema
 
 const userSchema = new Schema({
   accountType: String, // 'student' | 'recruiter'
-  email: String,
+  email: {
+    type: String,
+    primary: true,
+    unique: true,
+    trim: true,
+    required: true,
+  },
   password: {
     salt: String,
     key: String,
@@ -12,15 +18,15 @@ const userSchema = new Schema({
   },
   firstName: String,
   lastName: String,
-  // education: [
-  //   {
-  //     name: String,
-  //     startingYear: Number,
-  //     endingYear: Number,
-  //     description: String,
-  //     institution: String,
-  //   },
-  // ],
+  education: [
+    {
+      name: String,
+      startingYear: Number,
+      endingYear: Number,
+      description: String,
+      institution: String,
+    },
+  ],
 })
 
 const User = mongoose.model('User', userSchema)
