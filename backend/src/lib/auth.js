@@ -7,8 +7,8 @@ module.exports = {
   newUser: async (email, password) => {
     // build password
     const salt = crypto.randomBytes(16).toString('base64')
-    const key = await crypto
-      .pbkdf2(password, salt, iterations, 64, 'sha512')
+    const key = crypto
+      .pbkdf2Sync(password, salt, iterations, 64, 'sha512')
       .toString('base64')
 
     // create user
@@ -35,8 +35,8 @@ module.exports = {
     // user not found
     if (!user) return new Error('Not found')
 
-    const key = await crypto
-      .pbkdf2(
+    const key = crypto
+      .pbkdf2Sync(
         password,
         user.password.salt,
         user.password.iterations,
