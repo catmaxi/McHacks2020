@@ -16,6 +16,7 @@ client.on('login', async (ws, obj) => {
     }
     ws.sendJson(payload)
   } catch (e) {
+    console.warn(e)
     const error = {
       err: 'Login failed',
     }
@@ -34,6 +35,7 @@ client.on('register', async (ws, obj) => {
     }
     ws.sendJson(payload)
   } catch (e) {
+    console.warn(e)
     const error = {
       err: 'Failed to register',
     }

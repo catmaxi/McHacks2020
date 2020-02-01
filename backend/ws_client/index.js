@@ -8,7 +8,7 @@ ws.on('open', () => {
     id: 'abc@qwe.ca',
     pw: '123qwe',
   }
-  ws.send(obj)
+  ws.send(JSON.stringify(obj))
 })
 
 ws.on('message', data => {
