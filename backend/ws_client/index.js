@@ -3,7 +3,12 @@ const WebSocket = require('ws')
 const ws = new WebSocket('ws://35.224.20.164:8000')
 
 ws.on('open', () => {
-  ws.send('Hello World!')
+  const obj = {
+    op: 'register',
+    id: 'abc@qwe.ca',
+    pw: '123qwe',
+  }
+  ws.send(obj)
 })
 
 ws.on('message', data => {

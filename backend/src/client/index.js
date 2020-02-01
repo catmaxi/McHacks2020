@@ -20,6 +20,7 @@ client.on('login', async (ws, obj) => {
       err: 'Login failed',
     }
     ws.sendJson(error)
+    ws.terminate()
   }
 })
 
@@ -37,5 +38,6 @@ client.on('register', async (ws, obj) => {
       err: 'Failed to register',
     }
     ws.sendJson(error)
+    ws.terminate()
   }
 })
